@@ -1,0 +1,45 @@
+---
+name: "helm-action"
+description: "Does Helm stuff"
+inputs:
+  debug:
+    description: "Adds action debug messages. Might contain sensitive data."
+    required: false
+  config:
+    description: "Kubeconfig yaml contents."
+    required: true
+  context:
+    description: "Context to use if there are multiple."
+    required: false
+  namespace:
+    description: "Namespace to deploy to. You can use env vars here."
+    required: true
+  create_namespace:
+    description: "Should we create the specified namespace."
+    required: false
+    default: "true"
+  release:
+    description: "Helm release name. You can use env vars here."
+    required: true
+  chart:
+    description: "Helm chart path."
+    required: false
+    default: "./"
+  values:
+    description: "Helm values to be used in addition to the values file."
+    required: false
+  values_files:
+    description: "Helm values files paths, comma separated. Will be used in order provided."
+    required: false
+  atomic:
+    description: "Adds --atomic flag to helm."
+    required: false
+  wait:
+    description: "Adds --wait flag to helm."
+    required: false
+  timeout:
+    description: "Adds --timeout flag to helm."
+    required: false
+runs:
+  using: "docker"
+  image: "Dockerfile"
