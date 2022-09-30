@@ -40,6 +40,14 @@ inputs:
   timeout:
     description: "Adds --timeout flag to helm."
     required: false
+  github_summary:
+    description: "Should we write helm status to github step summary."
+    required: false
+    default: "true"
+  github_summary_strip_commands:
+    description: "Should we remove any ::github::commands from the summary."
+    required: false
+    default: "true"
 runs:
   using: "docker"
   image: "Dockerfile"

@@ -31,4 +31,17 @@ log_debug "Running: helm template ${HELM_ARGS})\n"
 log_debug "$(helm template ${HELM_ARGS})"
 
 echo "Running: helm upgrade ${INPUT_RELEASE} --install ${HELM_ARGS}"
+set +e
 helm upgrade ${INPUT_RELEASE} --install ${HELM_ARGS}
+helm_status="${?}"
+
+if [ "${INPUT_GITHUB_SUMMARY}" == "true" ]; then
+    log_debug "Writing helm status to ${GITHUB_STEP_SUMMARY}"
+    if [ "${INPUT_GITHUB_SUMMARY_STRIP_COMMANDS}" == "true" ]; then
+        helm status --namespace "${INPUT_NAMESPACE}" "${INPUT_RELEASE}" | grep -Ev '^::.+::.+' >> "${GITHUB_STEP_SUMMARY}"
+    else
+        helm status --namespace "${INPUT_NAMESPACE}" "${INPUT_RELEASE}" >> "${GITHUB_STEP_SUMMARY}"
+    fi
+fi
+
+exit "${helm_status}"
