@@ -39,6 +39,8 @@ HELM_ARGS="--namespace ${INPUT_NAMESPACE}"
 [ -n "${RUNNER_DEBUG}" ] && HELM_ARGS="${HELM_ARGS} --debug"
 HELM_ARGS="${HELM_ARGS} ${INPUT_CHART}"
 
+[ -n "${INPUT_APP_VERSION}" ] && yq -i ".appVersion = \"${INPUT_APP_VERSION}\"" ${INPUT_CHART}/Chart.yaml
+
 [ -n "${INPUT_VALUES}" ] && log_debug "Values:\n$(cat /tmp/gha_input_values.yaml)"
 log_debug "Running: helm template ${HELM_ARGS})\n"
 log_debug "$(helm template ${HELM_ARGS})"

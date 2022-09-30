@@ -28,6 +28,9 @@ inputs:
     description: "Helm chart path."
     required: false
     default: "./"
+  app_version:
+    description: "The version to set AppVersion in Chart.yaml"
+    required: false
   values:
     description: "Helm values to be used in addition to the values file."
     required: false

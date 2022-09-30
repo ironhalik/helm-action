@@ -10,7 +10,8 @@ ENV stern_version=1.22.0 \
     stern_checksum=cecafc0110310118fb77c0d9bcc7af8852fe4cfd8252d096b070c647b70d1cd9
 
 RUN apk add --no-cache \
-    bash \
+    'bash=~5.1' \
+    'yq=~4.25' \
     py3-pip &&\
     pip install --no-cache 'awscli>=1.25'
 
