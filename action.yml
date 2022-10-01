@@ -2,6 +2,7 @@
 name: "helm-action"
 description: "Does Helm stuff"
 inputs:
+  # Inputs from kubectl-action-base
   debug:
     description: "Adds action debug messages. Might contain sensitive data."
     required: false
@@ -11,9 +12,13 @@ inputs:
   eks_cluster:
     description: "Name of the EKS cluster to interact with. Will use aws eks update-kubeconfig."
     required: false
+  eks_role_arn:
+    description: "The AWS IAM role to use when authenticating with EKS."
+    required: false
   context:
     description: "Context to use if there are multiple."
     required: false
+  # helm-action specific inputs
   namespace:
     description: "Namespace to deploy to. You can use env vars here."
     required: true
