@@ -1,7 +1,7 @@
 # This code is meant to be used with
 # https://github.com/ironhalik/kubectl-action-base
 if [ ! -n "${IS_KUBECTL_ACTION_BASE}" ]; then
-    echo "The script should be used on it's own!"
+    echo "::error:: The script is not meant to be used on it's own."
     exit 1
 fi
 

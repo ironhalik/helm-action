@@ -40,7 +40,7 @@ inputs:
     description: "Helm values to be used in addition to the values file."
     required: false
   values_files:
-    description: "Helm values files paths, comma separated. Will be used in order provided."
+    description: "Helm values files paths, comma separated. Will be used in the order provided."
     required: false
   atomic:
     description: "Adds --atomic flag to helm."
