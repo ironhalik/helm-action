@@ -19,8 +19,8 @@ HELM_ARGS="${HELM_ARGS} ${INPUT_CHART}"
 [ -n "${INPUT_APP_VERSION}" ] && yq -i ".appVersion = \"${INPUT_APP_VERSION}\"" ${INPUT_CHART}/Chart.yaml
 
 [ -n "${INPUT_VALUES}" ] && log debug "Values:\n$(cat /tmp/gha_input_values.yaml)"
-log debug "Running: helm template ${HELM_ARGS})\n"
-log debug "$(helm template ${HELM_ARGS})"
+log debug "Running: helm template ${INPUT_RELEASE} ${HELM_ARGS})\n"
+log debug "$(helm template ${INPUT_RELEASE} ${HELM_ARGS})"
 
 log info "Running: helm upgrade ${INPUT_RELEASE} --install ${HELM_ARGS}"
 set +e
