@@ -1,0 +1,22 @@
+name: Build, scan, and publish the image
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - v*
+
+jobs:
+  test-shellcheck:
+    name: Run Shellcheck
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: ShellCheck
+        uses: ludeeus/action-shellcheck@1.1.0
+        with:
+          ignore: Dockerfile

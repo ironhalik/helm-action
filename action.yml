@@ -18,12 +18,12 @@ inputs:
   context:
     description: "Context to use if there are multiple."
     required: false
-  # helm-action specific inputs
   namespace:
-    description: "Namespace to deploy to. You can use env vars here."
-    required: true
+    description: "Namespace to use."
+    required: false
+  # helm-action specific inputs
   create_namespace:
-    description: "Should we create the specified namespace."
+    description: "Should we create the namespace."
     required: false
     default: "true"
   release:
