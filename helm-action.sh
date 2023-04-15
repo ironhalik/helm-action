@@ -9,7 +9,7 @@ fi
 # helm-action specific code
 get_inputs CREATE_NAMESPACE RELEASE CHART APP_VERSION VALUES VALUES_FILES ATOMIC WAIT TIMEOUT GITHUB_SUMMARY GITHUB_SUMMARY_STRIP_COMMANDS 
 
-HELM_ARGS="--namespace ${NAMESPACE}"
+HELM_ARGS="${HELM_ARGS} --namespace ${NAMESPACE}"
 [ "${CREATE_NAMESPACE}" == "true" ] && HELM_ARGS="${HELM_ARGS} --create-namespace"
 [ "${ATOMIC}" == "true" ] && HELM_ARGS="${HELM_ARGS} --atomic"
 [ "${WAIT}" == "true" ] && HELM_ARGS="${HELM_ARGS} --wait"
